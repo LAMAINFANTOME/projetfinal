@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+  
+    <title>boutique</title>
+  
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Dosis:400,600,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+  </head>
+
+<body class="sub_page">
+  
+
+    <!-- about section -->
+  
+    <section class="about_section layout_padding">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10 ml-auto pr-0">
+            <div class="about_container">
+              <div class="row">
+                <div class="col-lg-3 col-md-5">
+                  <div class="detail-box">
+                    <div class="heading_container">
+                      <a href="{% url 'index' %}">
+                        <h1>La boutique de Big C</h1>
+                    </a>
+                
+                    {% if  user.is_authenticated %}
+                        {{ user.username }}
+                        <a href ="{% url 'logout' %}">Deconnexion</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">login</a>
+                        <a href="{% url 'signup' %}">S'inscrire</a>
+                    {% endif %}
+                
+                    {% if user.cart %}
+                    <a href="{% url 'cart' %}">Voir le panier ({{ user.cart.orders.count }}) </a>
+                    {% endif %}
+                    {% block content %}
+                    {% endblock %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end about section -->
+  
+    <!-- info section -->
+   
+    <!-- end info section -->
+  
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+  
+  
+  
+    <!-- owl carousel script -->
+    
+  
+  
+  </body>
+
+</html>
